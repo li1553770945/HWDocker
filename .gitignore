@@ -1,0 +1,7 @@
+/data
+/django/code/common/__pycache__
+/django/code/group/__pycache__
+/django/code/group/migrations
+/django/code/login/__pycache__
+/django/code/work/__pycache__
+/django/code/work/migrations
