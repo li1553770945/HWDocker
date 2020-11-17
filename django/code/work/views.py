@@ -529,16 +529,16 @@ class ExportView(APIView):
                 return Response(context)
             else:
                 if export.get_error_status():
-                    context['er_code'] = 5001
+                    context['err_code'] = 5001
                     context['error'] = export.get_error()
                     return Response(context)
 
                 if export.get_done_status():
                     status = data.get('status')
                     if status is not None:
-                        context['er_code'] = 0
+                        context['err_code'] = 0
                         context['data'] = dict()
-                        context['done'] = True
+                        context['data']['done'] = True
                         return Response(context)
                     else:
                         file = export.file_name
@@ -608,7 +608,8 @@ def export_thread(dir_path, work_id):
 class ExportThread:
     def __init__(self, dir_path, work_id):
         self.dir_path = dir_path
-        self.file_name = os.path.join(self.dir_path, 'export.zip')
+        import time
+        self.file_name = os.path.join(os.path.abspath(os.path.dirname(dir_path)+os.path.sep+"."), 'export{}.zip'.format(str(time.time())))
         self.is_done = False
         self.error = False
         self.err_msg = ''
