@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = conf.get("django","secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(conf.get("django","debug"))
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
