@@ -1,4 +1,4 @@
 
 window.appConfig = {
-    baseURL: 'http://127.0.0.1/api/',
+    baseURL: 'http://localhost:8080/api/',
   }
