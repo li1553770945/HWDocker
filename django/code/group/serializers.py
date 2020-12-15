@@ -27,10 +27,10 @@ class GroupUnSerializer(serializers.Serializer):
             raise serializers.ValidationError("组名格式不正确")
 
     def validate_desc(self, desc):
-        if valid_group_information('desc', desc):
+        if len(desc) <= 500:
             return desc
         else:
-            raise serializers.ValidationError("描述格式不正确")
+            raise serializers.ValidationError("描述过长")
 
     def validate_password(self, password):
         if valid_group_information('password', password):
@@ -42,8 +42,6 @@ class GroupUnSerializer(serializers.Serializer):
 def valid_group_information(name, data):
     if name == 'name':
         return re.match("^[a-zA-Z0-9\u4e00-\u9fa5_丶]{1,20}$", data) is not None
-    if name == 'desc':
-        return re.match("^[a-zA-Z0-9\u4e00-\u9fa5_丶]{0,200}$", data) is not None
     if name == 'password':
         return re.match("^[0-9a-zA-Z]{6,18}$", data) is not None
 
