@@ -10,7 +10,6 @@ services:
    restart: always
    volumes:
         - "./data/mysql/data:/var/lib/mysql"
-        - "./mysql/my.cnf:/etc/my.cnf"
    ports:
         - "3306:3306"
    command: --default-authentication-plugin=mysql_native_password
